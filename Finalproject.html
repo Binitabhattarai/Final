@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB-115 Final Project</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #banner {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <h1>Perfectly Portioned Fitness</h1>
+        <p>Name: Binita Bhattarai</p>
+        <p>Course: WEB-115</p>
+        <p>Section: 0006</p>
+        <h2>Build Your Meal Plan</h2>
+    </div>
+
+    <form id="mealPlanForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="goal">Goal for the Week:</label>
+        <input type="text" id="goal" required>
+
+        <!-- Add inputs for each meal (Breakfast, Snack, Lunch, Snack, Dinner) -->
+
+        <button type="button" onclick="generateMealPlan()">Generate Meal Plan</button>
+    </form>
+
+    <script>
+        function generateMealPlan() {
+            // Validate email
+            const email = document.getElementById('email').value;
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Gather other form data
+            const name = document.getElementById('name').value;
+            const goal = document.getElementById('goal').value;
+            // ... gather other form data
+
+            // Generate meal plan content
+            const mealPlanContent = `
+                <h1>Weekly Meal Plan</h1>
+                <p>Name: ${name}</p>
+                <p>Email: ${email}</p>
+                <p>Goal: ${goal}</p>
+                <!-- Display meal plan based on user input -->
+                <!-- You can use monospaced font or CSS for text wrapping -->
+
+                <!-- Add other content as needed -->
+            `;
+
+            // Open a new window and write the meal plan content
+            const newWindow = window.open();
+            newWindow.document.write(mealPlanContent);
+        }
+
+        function validateEmail(email) {
+            // Implement a simple email validation logic
+            // You can use a more sophisticated method based on your needs
+            const emailRegex = /\S+@\S+\.\S+/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+</html>
